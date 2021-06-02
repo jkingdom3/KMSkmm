@@ -24,6 +24,8 @@
 class Kmm: virtual public Model {
 
 protected:
+    bool init_bool = false;
+
     double beta = 0;
     std::map<unsigned int, double> gamma;
     std::map<unsigned int, double> delta;
@@ -31,6 +33,10 @@ protected:
     std::map<unsigned int, double> theta;
     std::map<unsigned int, double> epsilon0;
 
+    std::vector<double> age;
+    std::vector<double> year;
+    std::vector<double> cohort;
+    std::vector<double> log_mx;
 
 public:
     // Get variables
@@ -61,14 +67,13 @@ public:
     Data<double> fitted_values() const;
     std::vector<double> fitted_values(const std::vector<double>& params) const;
     void transfer(const std::vector<double>& params);
-    void save(const std::string location);
+    void save(const std::string location) const;
 
     // Other
     //void normalize();
-    //unsigned int derive_transfer_vector_size();
-    //vector<double> get_transfer_vector();
+    size_t derive_transfer_vector_size();
+    std::vector<double> get_transfer_vector();
     //vector<double> derive_starting_vector(
-    //        const map<string, Matrix>& calibration_data,
     //        const bool print_progress = false) const;
 };
 
