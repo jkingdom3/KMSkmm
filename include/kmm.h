@@ -57,11 +57,12 @@ public:
 
     // Constructors
     Kmm();
-    Kmm(int min_cohort, int max_cohort,
-        int min_year, int max_year,
+    Kmm(unsigned int min_cohort, unsigned int max_cohort,
+        unsigned int min_year, unsigned int max_year,
         unsigned int min_age, unsigned int max_age);
+    Kmm(Data<double>& X);
 
-    void load_data(Data<double>& X);
+    void initialize(unsigned int min_cohort, unsigned int max_cohort)
 
     // From parent class model - pure virtual functions
     Data<double> fitted_values() const;

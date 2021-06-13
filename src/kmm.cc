@@ -14,7 +14,7 @@ Kmm::Kmm(
         int min_year, int max_year,
         unsigned int min_age, unsigned int max_age) {
 
-    assert(not this->init_bool);
+    assert(!this->init_bool);
 
     this->beta = 0;
     this->gamma.clear();
@@ -37,4 +37,16 @@ Kmm::Kmm(
         this->theta[k] = 0;}
 
     this->init_bool = true;
+}
+
+
+/// Constructor from Data object
+Kmm::Kmm(Data<double>& X) {
+    assert(!explanatory_data_loaded);
+    assert(!observed_data_loaded);
+    assert(!this->init_bool);
+
+    assert(X.is_tabular());
+
+    // Requires initialize!
 }
