@@ -1,3 +1,4 @@
+#include <KMSdata-1.0/data.h>
 #include <KMSkmm-1.0/kmm.h>
 
 #include <assert.h>
@@ -5,10 +6,10 @@
 
 int main() {
 
-    Kmm X;
+    Kmm L;
 
     Kmm M(1900, 1930, 1950, 1980, 30, 80);
-
+    
     int beta_size {1};
     int gamma_size {1980 - 1950 + 1};
     int delta_size {1980 - 1950 + 1 - 1};
@@ -19,6 +20,11 @@ int main() {
     assert(M.derive_transfer_vector_size() ==
             beta_size + gamma_size + delta_size +
             delta_temp_size + theta_size + epsilon0_size);
+
+
+    Data<double> X {data::file_to_double("data.csv")};
+    assert(X.is_tabular());
+    Kmm N(X);
 
     return 0;
 }

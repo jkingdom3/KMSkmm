@@ -42,6 +42,8 @@ protected:
         unsigned int min_year, unsigned int max_year,
         unsigned int min_age, unsigned int max_age);
 
+    void load_data(Data<double> X);
+
 public:
     // Get variables
     //double get_beta() const;
@@ -64,8 +66,7 @@ public:
     Kmm(unsigned int min_cohort, unsigned int max_cohort,
         unsigned int min_year, unsigned int max_year,
         unsigned int min_age, unsigned int max_age);
-    Kmm(Data<double>& X);
-
+    Kmm(const Data<double>& X);
 
     // From parent class model - pure virtual functions
     Data<double> fitted_values() const;

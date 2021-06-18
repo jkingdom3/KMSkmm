@@ -2,6 +2,8 @@
 
 #include <assert.h>
 
+#include <algorithm> // min_element, max_element
+
 
 /// Default constructor
 Kmm::Kmm() {
@@ -10,43 +12,31 @@ Kmm::Kmm() {
 
 /// Constructor
 Kmm::Kmm(
-        int min_cohort, int max_cohort,
-        int min_year, int max_year,
+        unsigned int min_cohort, unsigned int max_cohort,
+        unsigned int min_year, unsigned int max_year,
         unsigned int min_age, unsigned int max_age) {
 
-    assert(!this->init_bool);
-
-    this->beta = 0;
-    this->gamma.clear();
-    this->delta.clear();
-    this->delta_temp.clear();
-    this->theta.clear();
-    this->epsilon0.clear();
-
-    for (unsigned int k = min_cohort; k <= max_cohort; k++) {
-        this->gamma[k] = 0;
-        this->epsilon0[k] = 0;}
-
-    for (unsigned int k = min_year+1; k <= max_year; k++) {
-        this->delta[k] = 0;}
-
-    for (unsigned int k = min_year; k <= max_year-1; k++) {
-        this->delta_temp[k] = 0;}
-
-    for (unsigned int k = min_age+1; k <= max_age; k++) {
-        this->theta[k] = 0;}
-
-    this->init_bool = true;
+    this->initialize(min_cohort, max_cohort,
+            min_year, max_year,
+            min_age, max_age);
 }
 
 
 /// Constructor from Data object
-Kmm::Kmm(Data<double>& X) {
+Kmm::Kmm(const Data<double>& X) {
     assert(!explanatory_data_loaded);
     assert(!observed_data_loaded);
     assert(!this->init_bool);
-
     assert(X.is_tabular());
+X.nrows();
+    this->load_data(X); // This is where the problem is
+//X.nrows();
 
-    // Requires initialize!
+//    this->initialize(
+//            *std::min_element(X["Cohort"], X["Cohort"] + X.nrows()),
+//            *std::max_element(X["Cohort"], X["Cohort"] + X.nrows()),
+//            *std::min_element(X["Year"], X["Year"] + X.nrows()),
+//            *std::max_element(X["Year"], X["Year"] + X.nrows()),
+//            *std::min_element(X["Age"], X["Age"] + X.nrows()),
+//            *std::max_element(X["Age"], X["Age"] + X.nrows()));
 }
