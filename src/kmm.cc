@@ -28,15 +28,14 @@ Kmm::Kmm(const Data<double>& X) {
     assert(!observed_data_loaded);
     assert(!this->init_bool);
     assert(X.is_tabular());
-X.nrows();
-    this->load_data(X); // This is where the problem is
-//X.nrows();
 
-//    this->initialize(
-//            *std::min_element(X["Cohort"], X["Cohort"] + X.nrows()),
-//            *std::max_element(X["Cohort"], X["Cohort"] + X.nrows()),
-//            *std::min_element(X["Year"], X["Year"] + X.nrows()),
-//            *std::max_element(X["Year"], X["Year"] + X.nrows()),
-//            *std::min_element(X["Age"], X["Age"] + X.nrows()),
-//            *std::max_element(X["Age"], X["Age"] + X.nrows()));
+    this->load_data(X);
+
+    this->initialize(
+            *std::min_element(this->cohort.begin(), this->cohort.end()),
+            *std::max_element(this->cohort.begin(), this->cohort.end()),
+            *std::min_element(this->year.begin(), this->year.end()),
+            *std::max_element(this->year.begin(), this->year.end()),
+            *std::min_element(this->age.begin(), this->age.end()),
+            *std::max_element(this->age.begin(), this->age.end()));
 }
