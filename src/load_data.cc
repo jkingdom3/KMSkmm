@@ -13,22 +13,22 @@
 **/
 void Kmm::load_data(Data<double> X) {
 
+    X.sort_by(std::vector<std::string> {"Year", "Age"});
     std::vector<double> c;
+
     c.reserve(X.nrows());
 
-    for (auto it_c = c.begin(), it_y = X["Year"], it_a = X["Age"];
-            it_c != c.end(); it_c++, it_y++, it_a++) {
-
-        *it_c = *it_y - *it_a;}
-
-    std::cout << "c.size(): " << c.size() << std::endl;
-    std::cout << "X.nrows(): " << X.nrows() << std::endl;
+    for (unsigned int k = 0; k < X.nrows(); k++) {
+        c.push_back(X["Year"][k] - X["Age"][k]);}
 
     X.insert("Cohort", c);
 
-    std::cout << X.nrows() << std::endl;
+    std::cout << X["Cohort"][0] << std::endl;
+    std::cout << "12" << std::endl;
 
     X.sort_by(std::vector<std::string> {"Cohort", "Age"});
+
+    std::cout << "1" << std::endl;
 
     this->age = X.get_column("Age");
     this->year = X.get_column("Year");
