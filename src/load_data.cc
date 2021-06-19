@@ -13,14 +13,12 @@
 **/
 void Kmm::load_data(Data<double> X) {
 
-    X.sort_by(std::vector<std::string> {"Year", "Age"});
+    assert(X.is_tabular());
+
     std::vector<double> c;
-
     c.reserve(X.nrows());
-
     for (unsigned int k = 0; k < X.nrows(); k++) {
         c.push_back(X["Year"][k] - X["Age"][k]);}
-
     X.insert("Cohort", c);
 
     X.sort_by(std::vector<std::string> {"Cohort", "Age"});

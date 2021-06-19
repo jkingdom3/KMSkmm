@@ -23,7 +23,6 @@ int main() {
 
 
     Data<double> X {data::file_to_double("data.csv")};
-    assert(X.is_tabular());
     Kmm N(X);
 
     return 0;
