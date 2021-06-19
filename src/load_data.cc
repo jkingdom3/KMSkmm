@@ -23,12 +23,7 @@ void Kmm::load_data(Data<double> X) {
 
     X.insert("Cohort", c);
 
-    std::cout << X["Cohort"][0] << std::endl;
-    std::cout << "12" << std::endl;
-
     X.sort_by(std::vector<std::string> {"Cohort", "Age"});
-
-    std::cout << "1" << std::endl;
 
     this->age = X.get_column("Age");
     this->year = X.get_column("Year");
