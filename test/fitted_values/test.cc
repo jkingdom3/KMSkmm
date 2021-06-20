@@ -1,6 +1,8 @@
 #include <KMSdata-1.0/data.h>
 #include <KMSkmm-1.0/kmm.h>
 
+#include <assert.h>
+
 
 int main() {
     // Test 1
@@ -8,12 +10,9 @@ int main() {
     Kmm M(X);
 
     Data<double> Y_bar = M.fitted_values();
-/*
-    // Test that epsilon has been calculated correctly
-    Y_bar.save(KMS + "/kmm/test/methods/fitted_values/" +
-            "output/fitted_values.csv", true, false);
-    system(("diff " + KMS + "/kmm/test/methods/fitted_values/" +
-            "output/fitted_values.csv " +
-            KMS + "/kmm/test/methods/fitted_values/target_output/" +
-            "fitted_values.csv").c_str());
-*/}
+
+    Data<double> solution {data::file_to_double("solution.csv")};
+
+    for (unsigned int k = 0; k < Y_bar.nrows(); k++) {
+        assert(abs(Y_bar["E(log_mx)"][k] - solution["E(log_mx)"][k]) < 1e-6);}
+}
