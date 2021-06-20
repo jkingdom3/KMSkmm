@@ -13,7 +13,7 @@ int main() {
     int beta_size {1};
     int gamma_size {1980 - 1950 + 1};
     int delta_size {1980 - 1950 + 1 - 1};
-    int delta_temp_size {1980 - 1950 + 1 - 1};
+    int delta_temp_size {1980 - 1950 + 1};
     int theta_size {80 - 30 + 1 - 1};
     int epsilon0_size {1980 - 1950 + 1};
 

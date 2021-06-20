@@ -5,12 +5,9 @@
 int main() {
     // Test 1
     Data<double> X {data::file_to_double("data.csv")};
+    Kmm M(X);
 
-    //Kmm M(calibration_data);
-
-    //auto [X, Y] {M.extract_calibration_data(calibration_data)};
-
-    //Matrix Y_bar = M.fitted_values(X);
+    Data<double> Y_bar = M.fitted_values();
 /*
     // Test that epsilon has been calculated correctly
     Y_bar.save(KMS + "/kmm/test/methods/fitted_values/" +

@@ -25,7 +25,7 @@ void Kmm::initialize(
     for (unsigned int k = min_year+1; k <= max_year; k++) {
         this->delta[k] = 0;}
 
-    for (unsigned int k = min_year; k <= max_year-1; k++) {
+    for (unsigned int k = min_year; k <= max_year; k++) {
         this->delta_temp[k] = 0;}
 
     for (unsigned int k = min_age+1; k <= max_age; k++) {
