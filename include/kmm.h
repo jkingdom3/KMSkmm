@@ -78,8 +78,6 @@ public:
     //void normalize();
     size_t derive_transfer_vector_size();
     std::vector<double> get_transfer_vector();
-    //vector<double> derive_starting_vector(
-    //        const bool print_progress = false) const;
 };
 
 #endif
