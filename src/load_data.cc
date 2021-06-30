@@ -30,6 +30,8 @@ void Kmm::load_data(Data<double> X) {
     for (auto it=this->log_mx.begin(); it != this->log_mx.end(); it++) {
         *it = log(*it);}
 
+    this->observed_data = this->log_mx;
+
     this->explanatory_data_loaded = true;
     this->observed_data_loaded = true;
 }

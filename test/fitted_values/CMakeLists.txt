@@ -10,7 +10,7 @@ project(TestKMSkmmFittedValues
         LANGUAGES CXX)
 
 add_executable(test test.cc)
-target_link_libraries(test PRIVATE KMSkmm-1.0 KMSdata-1.0)
+target_link_libraries(test PRIVATE KMSkmm-1.0 KMSdata-1.0 KMScommon-1.0)
 
 configure_file(data.csv ${CMAKE_CURRENT_BINARY_DIR}/data.csv COPYONLY)
 configure_file(solution.csv ${CMAKE_CURRENT_BINARY_DIR}/solution.csv COPYONLY)

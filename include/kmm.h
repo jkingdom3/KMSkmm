@@ -76,7 +76,7 @@ public:
 
     // Other
     //void normalize();
-    size_t derive_transfer_vector_size();
+    size_t derive_transfer_vector_size() const;
     std::vector<double> get_transfer_vector();
 };
 

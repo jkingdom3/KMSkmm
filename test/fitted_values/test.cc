@@ -17,7 +17,6 @@ int main() {
     std::vector<double> y_bar2 = M.fitted_values(params);
     Data<double> Y_bar2;
     Y_bar2.insert("E(log_mx)", y_bar2);
-
     Data<double> solution {data::file_to_double("solution.csv")};
 
     for (unsigned int k = 0; k < Y_bar.nrows(); k++) {

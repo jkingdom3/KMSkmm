@@ -18,19 +18,21 @@ int main() {
     maximum_values.reserve(M.derive_transfer_vector_size());
 
     for (auto k = 0; k < M.derive_transfer_vector_size(); k++) {
-        minimum_values.push_back(-0.5);
-        maximum_values.push_back(0.5);}
+        minimum_values.push_back(-0.1);
+        maximum_values.push_back(0.1);}
 
     std::vector<double> starting_vector(M.derive_transfer_vector_size());
     bool print_progress {true};
-    double parameter_tol=1e-4;
-    double objective_tol=1e-3;
+    double parameter_tol {1e-4};
+    double objective_tol {1e-3};
     unsigned int iteration_limit {200};
 
     M.fit(model::errors, maths::ssq,
             optim::golden_section_multiple, minimum_values, maximum_values,
             print_progress, parameter_tol, objective_tol, iteration_limit,
             starting_vector);
+
+    M.save("output");
 
     return 0;
 }

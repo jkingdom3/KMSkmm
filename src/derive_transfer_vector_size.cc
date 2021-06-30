@@ -6,7 +6,7 @@
  * Useful e.g. in specifying optim ranges as the size of the vector required
  * depends on the data
 */
-size_t Kmm::derive_transfer_vector_size() {
+size_t Kmm::derive_transfer_vector_size() const {
     
     return 1 + this->gamma.size() +
             this->delta.size() + this->delta_temp.size() +
