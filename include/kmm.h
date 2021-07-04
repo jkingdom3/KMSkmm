@@ -33,9 +33,9 @@ protected:
     std::map<unsigned int, double> theta;
     std::map<unsigned int, double> epsilon0;
 
-    std::vector<double> age;
-    std::vector<double> year;
-    std::vector<double> cohort;
+    std::vector<unsigned int> age;
+    std::vector<unsigned int> year;
+    std::vector<unsigned int> cohort;
     std::vector<double> log_mx;
 
     void initialize(unsigned int min_cohort, unsigned int max_cohort,
@@ -43,6 +43,13 @@ protected:
         unsigned int min_age, unsigned int max_age);
 
     void load_data(Data<double> X);
+
+    unsigned int min_age;
+    unsigned int max_age;
+    unsigned int min_year;
+    unsigned int max_year;
+    unsigned int min_cohort;
+    unsigned int max_cohort;
 
 public:
     // Get variables

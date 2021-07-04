@@ -46,23 +46,23 @@ std::vector<double> Kmm::fitted_values(
     for (unsigned int k = 1; k < this->age.size(); k++) {
         if (this->cohort[k] == this->cohort[k-1]) {
             y_bar.push_back(
-                    y_bar[k-1] -
+                    y_bar[k - 1] -
                     params[1 + gamma.size() + delta.size() +
-                            (this->year[k] - this->year[0] - 1)] +
+                            (this->year[k] - this->min_year - 1)] +
                     //this->delta_temp.at(this->year[k-1]) +
                     params[0] +
                     //this->beta +
-                    params[1 + (this->cohort[k] - this->cohort[0])] +
+                    params[1 + (this->cohort[k] - this->min_cohort)] +
                     //this->gamma.at(this->cohort[k]) +
                     params[1 + gamma.size() + delta.size() +
-                            (this->year[k] - this->year[0])]+
+                            (this->year[k] - this->min_year)]+
                     //this->delta_temp.at(this->year[k]) +
                     params[1 + gamma.size() +
-                            (this->year[k] - this->year[0])] +
+                            (this->year[k] - this->min_year)] +
                     //this->delta.at(this->year[k]) +
                     params[1 + gamma.size() + delta.size() +
                             delta_temp.size() +
-                            (this->age[k] - this->age[0])]);}
+                            (this->age[k] - this->min_age)]);}
                     //this->theta.at(this->age[k]));}
         else {
             y_bar.push_back(
@@ -70,7 +70,7 @@ std::vector<double> Kmm::fitted_values(
                     params[1 + this->gamma.size() + this->delta.size() +
                             this->delta_temp.size() +
                             this->theta.size() +
-                            (this->cohort[k] - this->cohort[0])]);}}
+                            (this->cohort[k] - this->min_cohort)]);}}
 
     return y_bar;
 }

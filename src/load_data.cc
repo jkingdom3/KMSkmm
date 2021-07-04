@@ -23,12 +23,16 @@ void Kmm::load_data(Data<double> X) {
 
     X.sort_by(std::vector<std::string> {"Cohort", "Age"});
 
-    this->age = X.get_column("Age");
-    this->year = X.get_column("Year");
-    this->cohort = X.get_column("Cohort");
-    this->log_mx = X.get_column("mx");
-    for (auto it=this->log_mx.begin(); it != this->log_mx.end(); it++) {
-        *it = log(*it);}
+    this->age.reserve(X.nrows());
+    this->year.reserve(X.nrows());
+    this->cohort.reserve(X.nrows());
+    this->log_mx.reserve(X.nrows());
+
+    for (unsigned int k = 0; k < X.nrows(); k++) {
+        this->age.push_back(int(X["Age"][k]));
+        this->year.push_back(int(X["Year"][k]));
+        this->cohort.push_back(int(X["Cohort"][k]));
+        this->log_mx.push_back(log(X["mx"][k]));}
 
     this->observed_data = this->log_mx;
 
